@@ -2,19 +2,34 @@
 
 import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
-import { ChevronLeft, ChevronRight, X } from "lucide-react"
+import { ChevronLeft, ChevronRight, X, Play } from "lucide-react"
+
+interface ProjectItem {
+  category: string
+  title: string
+  desc: string
+  detailedDescription?: string
+  images: string[]
+  thumbnail: string
+  video?: string
+}
 
 interface LightboxProps {
   isOpen: boolean
-  images: Array<{ src: string; alt: string }>
+  project: ProjectItem
   onClose: () => void
-  projectTitle: string
 }
 
-export default function PortfolioLightbox({ isOpen, images, onClose, projectTitle }: LightboxProps) {
+export default function PortfolioLightbox({ isOpen, project, onClose }: LightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const overlayRef = useRef(null)
   const contentRef = useRef(null)
+
+  useEffect(() => {
+    if (isOpen) {
+      setCurrentIndex(0)
+    }
+  }, [project, isOpen])
 
   useEffect(() => {
     if (isOpen) {
@@ -39,14 +54,20 @@ export default function PortfolioLightbox({ isOpen, images, onClose, projectTitl
   }
 
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+    setCurrentIndex((prev) => (prev === 0 ? project.images.length - 1 : prev - 1))
   }
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+    setCurrentIndex((prev) => (prev === project.images.length - 1 ? 0 : prev + 1))
+  }
+
+  const isVideo = (filename: string) => {
+    return filename.toLowerCase().endsWith(".mp4") || filename.toLowerCase().endsWith(".webm")
   }
 
   if (!isOpen) return null
+
+  const currentMedia = project.images[currentIndex]
 
   return (
     <div
@@ -56,63 +77,100 @@ export default function PortfolioLightbox({ isOpen, images, onClose, projectTitl
     >
       <div
         ref={contentRef}
-        className="relative max-w-4xl w-full max-h-[90vh] flex flex-col"
+        className="relative max-w-6xl w-full max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex justify-between items-center mb-4 text-white">
-          <h3 className="font-display text-2xl font-bold text-white">{projectTitle}</h3>
-          <button onClick={handleClose} className="p-2 hover:bg-white/10 rounded-lg transition-colors">
-            <X size={24} />
+        <div className="flex flex-col gap-3 mb-6 text-white">
+          <div className="flex justify-between items-start">
+            <h3 className="font-display text-3xl font-bold text-white">{project.title}</h3>
+            <button onClick={handleClose} className="p-2 hover:bg-white/10 rounded-lg transition-colors shrink-0">
+              <X size={24} />
+            </button>
+          </div>
+          {project.detailedDescription && (
+            <p className="text-white/90 text-base max-w-4xl leading-relaxed">{project.detailedDescription}</p>
+          )}
+          <button
+            onClick={handleClose}
+            className="self-start flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white font-semibold"
+          >
+            <ChevronLeft size={20} />
+            Volver a proyectos
           </button>
         </div>
 
-        {/* Image Container */}
+        {/* Media Container */}
         <div className="relative flex-1 bg-black rounded-lg overflow-hidden">
-          <img
-            src={images[currentIndex].src || "/placeholder.svg"}
-            alt={images[currentIndex].alt}
-            className="w-full h-full object-contain"
-          />
+          {isVideo(currentMedia) ? (
+            <video
+              src={currentMedia}
+              className="w-full h-full object-contain"
+              style={{ maxHeight: "70vh" }}
+              controls
+              autoPlay
+              loop
+            />
+          ) : (
+            <img
+              src={currentMedia || "/placeholder.svg"}
+              alt={`${project.title} - Imagen ${currentIndex + 1}`}
+              className="w-full h-full object-contain"
+              style={{ maxHeight: "70vh" }}
+            />
+          )}
 
           {/* Navigation Buttons */}
-          {images.length > 1 && (
+          {project.images.length > 1 && (
             <>
               <button
                 onClick={handlePrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/20 hover:bg-white/40 rounded-lg transition-colors text-white z-10"
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 hover:bg-white/40 rounded-lg transition-colors text-white z-10"
               >
-                <ChevronLeft size={28} />
+                <ChevronLeft size={32} />
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/20 hover:bg-white/40 rounded-lg transition-colors text-white z-10"
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 hover:bg-white/40 rounded-lg transition-colors text-white z-10"
               >
-                <ChevronRight size={28} />
+                <ChevronRight size={32} />
               </button>
             </>
           )}
 
           {/* Image Counter */}
-          {images.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/50 rounded-full text-white text-sm font-body">
-              {currentIndex + 1} / {images.length}
+          {project.images.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/70 rounded-full text-white text-base font-body">
+              {currentIndex + 1} / {project.images.length}
             </div>
           )}
         </div>
 
         {/* Thumbnails */}
-        {images.length > 1 && (
-          <div className="flex gap-2 mt-4 justify-center">
-            {images.map((image, index) => (
+        {project.images.length > 1 && (
+          <div className="flex gap-3 mt-6 justify-center flex-wrap">
+            {project.images.map((media, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                  index === currentIndex ? "border-accent" : "border-white/30 hover:border-white/50"
+                className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all relative ${
+                  index === currentIndex ? "border-[#FF6B35] scale-110" : "border-white/30 hover:border-white/50"
                 }`}
               >
-                <img src={image.src || "/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
+                {isVideo(media) ? (
+                  <>
+                    <video src={media} className="w-full h-full object-cover" muted />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                      <Play className="w-6 h-6 text-white" fill="white" />
+                    </div>
+                  </>
+                ) : (
+                  <img
+                    src={media || "/placeholder.svg"}
+                    alt={`Thumbnail ${index + 1}`}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </button>
             ))}
           </div>
