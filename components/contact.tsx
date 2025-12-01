@@ -102,7 +102,7 @@ const Contact = () => {
                       href="mailto:hola@valeorea.com"
                       className="text-[#545928] hover:text-[#E69D3B] transition-colors"
                     >
-                      hola@valeorea.com
+                      {"oreahovaleria@gmail.com"}
                     </a>
                   </div>
                 </div>
