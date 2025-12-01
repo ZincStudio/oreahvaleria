@@ -100,7 +100,7 @@ export default function Portfolio() {
       images: [
         "/images/Pulsera Plástico Mockup.png",
         "/images/Pines Cumbre Tajìn.jpg",
-        "/images/Bandera Cumbre Tajìn.jpg",
+        "/images/Bandera Cumbre Tajín.jpg",
       ],
     },
     {
@@ -184,10 +184,10 @@ export default function Portfolio() {
             <div
               key={index}
               data-portfolio-item
-              className="group cursor-pointer"
+              className="group cursor-pointer bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
               onClick={() => handleOpenLightbox(project)}
             >
-              <div className="relative overflow-hidden rounded-2xl shadow-lg mb-4 bg-gray-100">
+              <div className="relative overflow-hidden bg-gray-100">
                 {project.video ? (
                   <div className="relative w-full h-64">
                     <video
@@ -214,13 +214,13 @@ export default function Portfolio() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#C3DEEF]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              <div className="space-y-2">
+              <div className="p-6 space-y-3">
                 <h3 className="font-display text-xl font-bold" style={{ color: "#545928" }}>
                   {project.title}
                 </h3>
-                <p className="font-body text-muted-foreground">{project.desc}</p>
+                <p className="font-body text-muted-foreground line-clamp-2">{project.desc}</p>
                 <button
-                  className="mt-4 px-6 py-2 rounded-full font-semibold transition-all duration-300"
+                  className="mt-4 px-6 py-2 rounded-full font-semibold transition-all duration-300 w-full"
                   style={{ backgroundColor: "#545928", color: "white" }}
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}

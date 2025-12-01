@@ -31,7 +31,7 @@ const Header = () => {
         isScrolled ? "py-4 shadow-lg" : "py-6"
       }`}
       style={{
-        backgroundColor: "var(--cyan-light)",
+        backgroundColor: "var(--olive)",
       }}
     >
       <nav className="container mx-auto px-6 flex items-center justify-between">
@@ -50,33 +50,32 @@ const Header = () => {
 
           {/* Brand text */}
           <div className="flex flex-col">
-            <h1 className="text-2xl md:text-3xl font-black tracking-tight" style={{ color: "var(--olive)" }}>
-              Vale Orea
-            </h1>
-            <p className="text-sm md:text-base font-semibold" style={{ color: "#BCBF5E" }}>
-              Ilustrando la creatividad
-            </p>
+            <h1 className="text-2xl md:text-3xl font-black tracking-tight text-white">Vale Orea</h1>
+            <p className="text-sm md:text-base font-semibold text-white/90">Ilustrando la creatividad</p>
           </div>
         </div>
         {/* End logo integration */}
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-          {["inicio", "adn", "portafolio", "testimonios", "contacto"].map((item) => (
-            <li key={item}>
-              <button
-                onClick={() => scrollToSection(item)}
-                className="font-semibold hover:transition-colors duration-300 capitalize"
-                style={{
-                  color: "var(--olive)",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--warm-orange)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--olive)")}
-              >
-                {item}
-              </button>
-            </li>
-          ))}
+          {["inicio", "mi-identidad-creativa", "mi-trabajo", "servicios", "contacto"].map((item, index) => {
+            const labels = ["Inicio", "Mi identidad creativa", "Mi trabajo", "Servicios", "Contacto"]
+            return (
+              <li key={item}>
+                <button
+                  onClick={() => scrollToSection(item)}
+                  className="font-semibold hover:transition-colors duration-300"
+                  style={{
+                    color: "white",
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "var(--warm-orange)")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "white")}
+                >
+                  {labels[index]}
+                </button>
+              </li>
+            )
+          })}
         </ul>
 
         {/* Mobile Menu Button */}
@@ -84,7 +83,7 @@ const Header = () => {
           variant="ghost"
           size="icon"
           className="md:hidden"
-          style={{ color: "var(--olive)" }}
+          style={{ color: "white" }}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -96,22 +95,25 @@ const Header = () => {
         <div
           className="md:hidden backdrop-blur-lg border-t"
           style={{
-            backgroundColor: "rgba(195, 222, 239, 0.98)",
-            borderColor: "var(--olive)",
+            backgroundColor: "rgba(84, 89, 40, 0.98)",
+            borderColor: "white",
           }}
         >
           <ul className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            {["inicio", "adn", "portafolio", "testimonios", "contacto"].map((item) => (
-              <li key={item}>
-                <button
-                  onClick={() => scrollToSection(item)}
-                  className="font-semibold transition-colors duration-300 capitalize w-full text-left py-2"
-                  style={{ color: "var(--olive)" }}
-                >
-                  {item}
-                </button>
-              </li>
-            ))}
+            {["inicio", "mi-identidad-creativa", "mi-trabajo", "servicios", "contacto"].map((item, index) => {
+              const labels = ["Inicio", "Mi identidad creativa", "Mi trabajo", "Servicios", "Contacto"]
+              return (
+                <li key={item}>
+                  <button
+                    onClick={() => scrollToSection(item)}
+                    className="font-semibold transition-colors duration-300 w-full text-left py-2"
+                    style={{ color: "white" }}
+                  >
+                    {labels[index]}
+                  </button>
+                </li>
+              )
+            })}
           </ul>
         </div>
       )}
