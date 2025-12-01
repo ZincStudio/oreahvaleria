@@ -1,24 +1,28 @@
-import { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, MapPin } from 'lucide-react';
+"use client"
 
-gsap.registerPlugin(ScrollTrigger);
+import type React from "react"
+
+import { useEffect, useRef, useState } from "react"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { useToast } from "@/hooks/use-toast"
+import { Mail, Phone, MapPin } from "lucide-react"
+
+gsap.registerPlugin(ScrollTrigger)
 
 const Contact = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLFormElement>(null);
-  const { toast } = useToast();
-  
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLFormElement>(null)
+  const { toast } = useToast()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  });
+  })
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -32,53 +36,52 @@ const Contact = () => {
         duration: 1,
         stagger: 0.2,
         ease: "power3.out",
-      });
-    }, sectionRef);
+      })
+    }, sectionRef)
 
-    return () => ctx.revert();
-  }, []);
+    return () => ctx.revert()
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
+    e.preventDefault()
+
     // Basic validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Campos incompletos",
         description: "Por favor completa todos los campos del formulario",
         variant: "destructive",
-      });
-      return;
+      })
+      return
     }
 
     // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formData.email)) {
       toast({
         title: "Email inválido",
         description: "Por favor ingresa un email válido",
         variant: "destructive",
-      });
-      return;
+      })
+      return
     }
 
     toast({
       title: "Mensaje enviado",
       description: "Gracias por contactarme. Te responderé pronto.",
-    });
+    })
 
-    setFormData({ name: "", email: "", message: "" });
-  };
+    setFormData({ name: "", email: "", message: "" })
+  }
 
   return (
     <section id="contacto" ref={sectionRef} className="py-24 md:py-32 bg-[#C3DEEF]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 contact-content">
-          <h2 className="text-4xl font-black text-[#545928] mb-6 md:text-5xl">
-            Trabajemos juntos
-          </h2>
+          <h2 className="text-4xl font-black text-[#545928] mb-6 md:text-5xl">Trabajemos juntos</h2>
           <p className="text-xl text-[#545928] max-w-2xl mx-auto text-primary">
-            Tus ideas merecen trazos que las hagan brillar. Si estás listo para darles forma, trabajemos juntos y hagamos que el arte hable por ti.
+            Tus ideas merecen trazos que las hagan brillar. Si estás listo para darles forma, trabajemos juntos y
+            hagamos que el arte hable por ti.
           </p>
         </div>
 
@@ -86,10 +89,8 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="contact-content space-y-8">
             <div className="bg-white rounded-3xl p-8 creative-shadow shadow-lg">
-              <h3 className="text-2xl font-black text-[#545928] mb-8">
-                Información de contacto
-              </h3>
-              
+              <h3 className="text-2xl font-black text-[#545928] mb-8">Información de contacto</h3>
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-2xl bg-[#E69D3B] flex items-center justify-center flex-shrink-0">
@@ -112,11 +113,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-bold text-[#545928] mb-1">Teléfono</p>
-                    <a
-                      href="tel:+5491112345678"
-                      className="text-[#545928] hover:text-[#E69D3B] transition-colors"
-                    >
-                      +52 55 8110 1436   
+                    <a href="tel:+5491112345678" className="text-[#545928] hover:text-[#E69D3B] transition-colors">
+                      +52 55 8110 1436
                     </a>
                   </div>
                 </div>
@@ -127,24 +125,16 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-bold text-[#545928] mb-1">Ubicación</p>
-                    <p className="text-[#545928]">
-                      CDMX, México.   
-                    </p>
+                    <p className="text-[#545928]">CDMX, México.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="bg-white rounded-3xl p-8 shadow-lg">
-              <h4 className="text-xl font-black text-[#545928] mb-4">
-                Horario de atención
-              </h4>
-              <p className="text-[#545928]">
-                Lunes a Viernes: 9:00 - 18:00
-              </p>
-              <p className="text-[#545928]">
-                Respondo consultas en menos de 24 horas
-              </p>
+              <h4 className="text-xl font-black text-[#545928] mb-4">Horario de atención</h4>
+              <p className="text-[#545928]">Lunes a Viernes: 9:00 - 18:00</p>
+              <p className="text-[#545928]">Respondo consultas en menos de 24 horas</p>
             </div>
           </div>
 
@@ -191,7 +181,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Cuéntame sobre tu proyecto..."
-                  rows={6}
+                  rows={10}
                   className="border-2 border-[#BCBF5E] focus:border-[#E69D3B] rounded-xl resize-none text-[#545928]"
                 />
               </div>
@@ -208,7 +198,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

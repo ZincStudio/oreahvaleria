@@ -36,6 +36,13 @@ export default function Hero() {
       )
   }, [])
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section className="min-h-screen flex items-center justify-center pt-24 px-6 relative overflow-hidden bg-white">
       <div className="absolute top-20 left-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
@@ -56,10 +63,16 @@ export default function Hero() {
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap">
-          <button className="px-8 py-3 bg-accent text-accent-foreground rounded-full font-body font-semibold hover:bg-primary transition-all transform hover:scale-105">
+          <button
+            onClick={() => scrollToSection("portafolio")}
+            className="px-8 py-3 bg-accent text-accent-foreground rounded-full font-body font-semibold hover:bg-primary hover:text-white transition-all transform hover:scale-105"
+          >
             Ver Portafolio
           </button>
-          <button className="px-8 py-3 border-2 border-accent text-accent rounded-full font-body font-semibold hover:bg-accent/10 transition-all">
+          <button
+            onClick={() => scrollToSection("contacto")}
+            className="px-8 py-3 border-2 border-accent text-accent rounded-full font-body font-semibold hover:bg-accent/10 transition-all"
+          >
             Contáctame
           </button>
         </div>
