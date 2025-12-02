@@ -99,28 +99,34 @@ export default function Portfolio() {
       thumbnail: "/images/Pulsera Plástico Mockup.png",
       images: [
         "/images/Pulsera Plástico Mockup.png",
-        "/images/Pines Cumbre Tajìn.jpg",
+        "/images/Pines Cumbre Tajín.jpg",
         "/images/Bandera Cumbre Tajín.jpg",
       ],
     },
     {
       category: "fotografia",
       title: "Fotografía Bodegón",
-      desc: "Diseño editorial y maquetación de revista mensual",
+      desc: "Composición, luz y atmósfera al servicio de una historia en silencio.",
+      detailedDescription:
+        "Esta fotografía de bodegón fue creada a partir de la selección y disposición intencional de cada elemento, buscando equilibrar luz, textura y forma para construir una escena que revela la belleza de lo cotidiano. Un ejercicio que pone en práctica la técnica clásica del bodegón, donde cada objeto dialoga con el entorno para dar vida a una imagen armoniosa y expresiva.",
       thumbnail: "/images/Foto editada.jpg",
       images: ["/images/Foto editada.jpg", "/images/Foto original.jpg", "/images/Edicion.jpg"],
     },
     {
       category: "ilustracion",
       title: "Ilustración Botánica",
-      desc: "Serie de ilustraciones botánicas detalladas con enfoque científico y artístico",
+      desc: "Acuarelas que honran la belleza natural en su estado más puro.",
+      detailedDescription:
+        "Serie de ilustraciones botánicas realizadas con técnica de acuarela, enfocadas en capturar la forma, color y carácter de distintas flores. Cada pieza fue elaborada con detalle para destacar la esencia orgánica de la planta y posteriormente se integró en el diseño de un cartel cinematográfico, donde la ilustración aporta sensibilidad y vida a la composición final.",
       thumbnail: "/images/gladiola.jpg",
       images: ["/images/gladiola.jpg", "/images/crisantemo.jpg", "/images/Lavanda.jpg"],
     },
     {
       category: "animacion",
       title: "Animación Collage Cineminuto",
-      desc: "Serie de animaciones experimentales en técnica de collage para narrativa visual",
+      desc: "Animaciones que abren puertas a nuevos horizontes.",
+      detailedDescription:
+        "A partir de la técnica de collage y la animación en After Effects, se desarrollaron tres piezas promocionales para el festival Cineminuto. Cada composición une elementos análogos y digitales para construir paisajes simbólicos que evocan exploración, movimiento y la búsqueda de nuevas miradas.",
       thumbnail: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_CDvO58nPpawEkoezNqPZ6Vv42PJy/1fGyd17OpGiZumZKrZ1jtM/public/images/Primer%20Promo%20CM%20Valeria%20Orea%20%281%29%20%281%29.mp4",
       video: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/git-blob/prj_CDvO58nPpawEkoezNqPZ6Vv42PJy/1fGyd17OpGiZumZKrZ1jtM/public/images/Primer%20Promo%20CM%20Valeria%20Orea%20%281%29%20%281%29.mp4",
       images: [

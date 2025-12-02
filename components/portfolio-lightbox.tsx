@@ -68,6 +68,7 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
   if (!isOpen) return null
 
   const currentMedia = project.images[currentIndex]
+  const isUICProject = project.title === "Identidad UIC 50 años"
 
   return (
     <div
@@ -77,23 +78,38 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
     >
       <div
         ref={contentRef}
-        className="relative max-w-6xl w-full max-h-[90vh] flex flex-col"
+        className={`relative max-w-6xl w-full max-h-[90vh] flex flex-col ${
+          isUICProject ? "bg-[#E69D3B] p-8 rounded-2xl" : ""
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex flex-col gap-3 mb-6 text-white">
+        <div className="flex flex-col gap-3 mb-6">
           <div className="flex justify-between items-start">
-            <h3 className="font-display text-3xl font-bold text-white">{project.title}</h3>
-            <button onClick={handleClose} className="p-2 hover:bg-white/10 rounded-lg transition-colors shrink-0">
+            <h3 className={`font-display text-3xl font-bold ${isUICProject ? "text-[#545928]" : "text-white"}`}>
+              {project.title}
+            </h3>
+            <button
+              onClick={handleClose}
+              className={`p-2 rounded-lg transition-colors shrink-0 ${
+                isUICProject ? "hover:bg-black/10 text-[#545928]" : "hover:bg-white/10 text-white"
+              }`}
+            >
               <X size={24} />
             </button>
           </div>
           {project.detailedDescription && (
-            <p className="text-white/90 text-base max-w-4xl leading-relaxed">{project.detailedDescription}</p>
+            <p className={`text-base max-w-4xl leading-relaxed ${isUICProject ? "text-gray-800" : "text-white/90"}`}>
+              {project.detailedDescription}
+            </p>
           )}
           <button
             onClick={handleClose}
-            className="self-start flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg transition-colors text-white font-semibold"
+            className={`self-start flex items-center gap-2 px-4 py-2 rounded-lg transition-colors font-semibold ${
+              isUICProject
+                ? "bg-[#545928] hover:bg-[#545928]/90 text-white"
+                : "bg-white/10 hover:bg-white/20 text-white"
+            }`}
           >
             <ChevronLeft size={20} />
             Volver a proyectos
@@ -101,12 +117,12 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
         </div>
 
         {/* Media Container */}
-        <div className="relative flex-1 bg-black rounded-lg overflow-hidden">
+        <div className={`relative flex-1 rounded-lg overflow-hidden ${isUICProject ? "bg-white p-4" : "bg-black"}`}>
           {isVideo(currentMedia) ? (
             <video
               src={currentMedia}
               className="w-full h-full object-contain"
-              style={{ maxHeight: "70vh" }}
+              style={{ maxHeight: isUICProject ? "60vh" : "70vh" }}
               controls
               autoPlay
               loop
@@ -115,8 +131,8 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
             <img
               src={currentMedia || "/placeholder.svg"}
               alt={`${project.title} - Imagen ${currentIndex + 1}`}
-              className="w-full h-full object-contain"
-              style={{ maxHeight: "70vh" }}
+              className={`w-full h-full object-contain ${isUICProject ? "shadow-lg" : ""}`}
+              style={{ maxHeight: isUICProject ? "60vh" : "70vh" }}
             />
           )}
 
@@ -125,13 +141,21 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
             <>
               <button
                 onClick={handlePrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 hover:bg-white/40 rounded-lg transition-colors text-white z-10"
+                className={`absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-lg transition-colors z-10 ${
+                  isUICProject
+                    ? "bg-[#545928] hover:bg-[#545928]/90 text-white"
+                    : "bg-white/20 hover:bg-white/40 text-white"
+                }`}
               >
                 <ChevronLeft size={32} />
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 hover:bg-white/40 rounded-lg transition-colors text-white z-10"
+                className={`absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-lg transition-colors z-10 ${
+                  isUICProject
+                    ? "bg-[#545928] hover:bg-[#545928]/90 text-white"
+                    : "bg-white/20 hover:bg-white/40 text-white"
+                }`}
               >
                 <ChevronRight size={32} />
               </button>
@@ -140,7 +164,11 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
 
           {/* Image Counter */}
           {project.images.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/70 rounded-full text-white text-base font-body">
+            <div
+              className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-base font-body ${
+                isUICProject ? "bg-[#545928] text-white" : "bg-black/70 text-white"
+              }`}
+            >
               {currentIndex + 1} / {project.images.length}
             </div>
           )}
@@ -154,7 +182,13 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all relative ${
-                  index === currentIndex ? "border-[#FF6B35] scale-110" : "border-white/30 hover:border-white/50"
+                  index === currentIndex
+                    ? isUICProject
+                      ? "border-[#545928] scale-110"
+                      : "border-[#FF6B35] scale-110"
+                    : isUICProject
+                      ? "border-gray-400 hover:border-[#545928]"
+                      : "border-white/30 hover:border-white/50"
                 }`}
               >
                 {isVideo(media) ? (
