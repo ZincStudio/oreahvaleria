@@ -79,7 +79,7 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
       <div
         ref={contentRef}
         className={`relative max-w-6xl w-full max-h-[90vh] flex flex-col ${
-          isUICProject ? "bg-[#E69D3B] p-8 rounded-2xl" : ""
+          isUICProject ? "bg-[#E69D3B]/80 p-8 rounded-2xl" : ""
         }`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -117,11 +117,13 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
         </div>
 
         {/* Media Container */}
-        <div className={`relative flex-1 rounded-lg overflow-hidden ${isUICProject ? "bg-white p-4" : "bg-black"}`}>
+        <div
+          className={`relative flex-1 rounded-lg overflow-hidden flex items-center justify-center ${isUICProject ? "bg-white p-6" : "bg-black"}`}
+        >
           {isVideo(currentMedia) ? (
             <video
               src={currentMedia}
-              className="w-full h-full object-contain"
+              className={`object-contain ${isUICProject ? "w-[80%] shadow-lg" : "w-full"}`}
               style={{ maxHeight: isUICProject ? "60vh" : "70vh" }}
               controls
               autoPlay
@@ -131,7 +133,7 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
             <img
               src={currentMedia || "/placeholder.svg"}
               alt={`${project.title} - Imagen ${currentIndex + 1}`}
-              className={`w-full h-full object-contain ${isUICProject ? "shadow-lg" : ""}`}
+              className={`object-contain ${isUICProject ? "w-[80%] shadow-lg" : "w-full"}`}
               style={{ maxHeight: isUICProject ? "60vh" : "70vh" }}
             />
           )}
