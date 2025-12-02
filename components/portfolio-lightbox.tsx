@@ -123,8 +123,8 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
           {isVideo(currentMedia) ? (
             <video
               src={currentMedia}
-              className={`object-contain ${isUICProject ? "w-[80%] shadow-lg" : "w-full"}`}
-              style={{ maxHeight: isUICProject ? "60vh" : "70vh" }}
+              className={`object-contain ${isUICProject ? "max-w-lg w-full shadow-lg" : "w-full"}`}
+              style={{ maxHeight: isUICProject ? "50vh" : "70vh" }}
               controls
               autoPlay
               loop
@@ -133,8 +133,8 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
             <img
               src={currentMedia || "/placeholder.svg"}
               alt={`${project.title} - Imagen ${currentIndex + 1}`}
-              className={`object-contain ${isUICProject ? "w-[80%] shadow-lg" : "w-full"}`}
-              style={{ maxHeight: isUICProject ? "60vh" : "70vh" }}
+              className={`object-contain ${isUICProject ? "max-w-lg w-full shadow-lg" : "w-full"}`}
+              style={{ maxHeight: isUICProject ? "50vh" : "70vh" }}
             />
           )}
 
