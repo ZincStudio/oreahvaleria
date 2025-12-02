@@ -64,10 +64,10 @@ export default function Hero() {
 
         <div className="flex gap-4 justify-center flex-wrap">
           <button
-            onClick={() => scrollToSection("portafolio")}
+            onClick={() => scrollToSection("mi-trabajo")}
             className="px-8 py-3 bg-accent text-accent-foreground rounded-full font-body font-semibold hover:bg-primary hover:text-white transition-all transform hover:scale-105"
           >
-            Mi Trabajo 
+            Mi Trabajo
           </button>
           <button
             onClick={() => scrollToSection("contacto")}

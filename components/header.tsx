@@ -38,12 +38,12 @@ const Header = () => {
         {/* Logo integration with name and selling line */}
         <div className="flex items-center gap-4">
           {/* Logo */}
-          <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
+          <div className="w-16 h-16 md:w-20 md:h-20 flex-shrink-0">
             <Image
               src="/images/Logo para web blanco.png"
               alt="Vale Orea Logo"
-              width={56}
-              height={56}
+              width={80}
+              height={80}
               className="w-full h-full object-contain"
             />
           </div>
