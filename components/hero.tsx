@@ -67,7 +67,7 @@ export default function Hero() {
             onClick={() => scrollToSection("portafolio")}
             className="px-8 py-3 bg-accent text-accent-foreground rounded-full font-body font-semibold hover:bg-primary hover:text-white transition-all transform hover:scale-105"
           >
-            Ver Portafolio
+            Mi Trabajo 
           </button>
           <button
             onClick={() => scrollToSection("contacto")}

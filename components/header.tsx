@@ -40,7 +40,7 @@ const Header = () => {
           {/* Logo */}
           <div className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0">
             <Image
-              src="/images/logo-web-blanco.jpg"
+              src="/images/Logo para web blanco.png"
               alt="Vale Orea Logo"
               width={56}
               height={56}

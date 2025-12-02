@@ -217,7 +217,7 @@ export default function Portfolio() {
                     className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#C3DEEF]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#E69D3B]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
               <div className="p-6 space-y-3">
