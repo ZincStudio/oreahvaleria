@@ -120,7 +120,7 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
         <div
           className={`relative flex-1 rounded-lg overflow-hidden flex items-center justify-center ${isUICProject ? "" : "bg-black"}`}
         >
-          <div className={`${isUICProject ? "bg-white p-4 rounded-lg shadow-lg" : ""}`}>
+          <div className={`${isUICProject ? "bg-white rounded-xl shadow-lg overflow-hidden" : ""}`}>
             {isVideo(currentMedia) ? (
               <video
                 src={currentMedia}
