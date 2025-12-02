@@ -118,63 +118,65 @@ export default function PortfolioLightbox({ isOpen, project, onClose }: Lightbox
 
         {/* Media Container */}
         <div
-          className={`relative flex-1 rounded-lg overflow-hidden flex items-center justify-center ${isUICProject ? "bg-white p-6" : "bg-black"}`}
+          className={`relative flex-1 rounded-lg overflow-hidden flex items-center justify-center ${isUICProject ? "" : "bg-black"}`}
         >
-          {isVideo(currentMedia) ? (
-            <video
-              src={currentMedia}
-              className={`object-contain ${isUICProject ? "max-w-lg w-full shadow-lg" : "w-full"}`}
-              style={{ maxHeight: isUICProject ? "50vh" : "70vh" }}
-              controls
-              autoPlay
-              loop
-            />
-          ) : (
-            <img
-              src={currentMedia || "/placeholder.svg"}
-              alt={`${project.title} - Imagen ${currentIndex + 1}`}
-              className={`object-contain ${isUICProject ? "max-w-lg w-full shadow-lg" : "w-full"}`}
-              style={{ maxHeight: isUICProject ? "50vh" : "70vh" }}
-            />
-          )}
+          <div className={`${isUICProject ? "bg-white p-4 rounded-lg shadow-lg" : ""}`}>
+            {isVideo(currentMedia) ? (
+              <video
+                src={currentMedia}
+                className={`object-contain ${isUICProject ? "max-w-lg w-full" : "w-full"}`}
+                style={{ maxHeight: isUICProject ? "50vh" : "70vh" }}
+                controls
+                autoPlay
+                loop
+              />
+            ) : (
+              <img
+                src={currentMedia || "/placeholder.svg"}
+                alt={`${project.title} - Imagen ${currentIndex + 1}`}
+                className={`object-contain ${isUICProject ? "max-w-lg w-full" : "w-full"}`}
+                style={{ maxHeight: isUICProject ? "50vh" : "70vh" }}
+              />
+            )}
+          </div>
+        </div>
 
-          {/* Navigation Buttons */}
-          {project.images.length > 1 && (
-            <>
-              <button
-                onClick={handlePrev}
-                className={`absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-lg transition-colors z-10 ${
-                  isUICProject
-                    ? "bg-[#545928] hover:bg-[#545928]/90 text-white"
-                    : "bg-white/20 hover:bg-white/40 text-white"
-                }`}
-              >
-                <ChevronLeft size={32} />
-              </button>
-              <button
-                onClick={handleNext}
-                className={`absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-lg transition-colors z-10 ${
-                  isUICProject
-                    ? "bg-[#545928] hover:bg-[#545928]/90 text-white"
-                    : "bg-white/20 hover:bg-white/40 text-white"
-                }`}
-              >
-                <ChevronRight size={32} />
-              </button>
-            </>
-          )}
-
-          {/* Image Counter */}
-          {project.images.length > 1 && (
-            <div
-              className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-base font-body ${
-                isUICProject ? "bg-[#545928] text-white" : "bg-black/70 text-white"
+        {/* Navigation Buttons */}
+        {project.images.length > 1 && (
+          <>
+            <button
+              onClick={handlePrev}
+              className={`absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-lg transition-colors z-10 ${
+                isUICProject
+                  ? "bg-[#545928] hover:bg-[#545928]/90 text-white"
+                  : "bg-white/20 hover:bg-white/40 text-white"
               }`}
             >
-              {currentIndex + 1} / {project.images.length}
-            </div>
-          )}
-        </div>
+              <ChevronLeft size={32} />
+            </button>
+            <button
+              onClick={handleNext}
+              className={`absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-lg transition-colors z-10 ${
+                isUICProject
+                  ? "bg-[#545928] hover:bg-[#545928]/90 text-white"
+                  : "bg-white/20 hover:bg-white/40 text-white"
+              }`}
+            >
+              <ChevronRight size={32} />
+            </button>
+          </>
+        )}
+
+        {/* Image Counter */}
+        {project.images.length > 1 && (
+          <div
+            className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full text-base font-body ${
+              isUICProject ? "bg-[#545928] text-white" : "bg-black/70 text-white"
+            }`}
+          >
+            {currentIndex + 1} / {project.images.length}
+          </div>
+        )}
 
         {/* Thumbnails */}
         {project.images.length > 1 && (
