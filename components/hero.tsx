@@ -44,7 +44,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="flex items-center justify-center pt-28 pb-12 md:pt-32 md:pb-16 lg:py-24 px-4 md:px-6 relative overflow-hidden bg-white">
+    <section className="flex items-center justify-center pt-36 pb-12 md:pt-40 md:pb-16 lg:pt-44 lg:pb-20 px-4 md:px-6 relative overflow-hidden bg-white">
       <div className="absolute top-10 md:top-20 left-5 md:left-10 w-48 h-48 md:w-64 md:h-64 bg-secondary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-10 md:bottom-20 right-5 md:right-10 w-56 h-56 md:w-80 md:h-80 bg-muted/5 rounded-full blur-3xl"></div>
 
