@@ -99,8 +99,8 @@ export default function Portfolio() {
       thumbnail: "/images/Pulsera Plástico Mockup.png",
       images: [
         "/images/Pulsera Plástico Mockup.png",
-        "/images/Pines Cumbre Tajín.jpg",
-        "/images/Bandera Cumbre Tajín.jpg",
+        "/images/Pines Cumbre Tajìn.jpg",
+        "/images/Bandera Cumbre Tajìn.jpg",
       ],
     },
     {
