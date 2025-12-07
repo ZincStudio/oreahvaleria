@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Palette, BookOpen, Megaphone, Camera, Combine } from "lucide-react"
+import { Palette, BookOpen, Megaphone, Camera, Combine, Film } from "lucide-react"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -66,72 +66,75 @@ export default function Services() {
     {
       icon: Palette,
       title: "Branding",
-      description:
-        "Creación de identidades visuales únicas que capturan la esencia de tu marca través de ilustración personalizada.",
+      description: "Identidades visuales únicas mediante ilustración personalizada.",
     },
     {
       icon: BookOpen,
       title: "Editorial",
-      description:
-        "Diagramación y diseño de publicaciones que combinan ilustración artesanal con narrativa visual impactante.",
+      description: "Diagramación y diseño con ilustración artesanal y narrativa visual.",
     },
     {
       icon: Megaphone,
       title: "Publicidad",
-      description: "Campañas visuales que generan conexión emocional mediante ilustración auténtica y creativa.",
+      description: "Campañas visuales con ilustración auténtica y creativa.",
     },
     {
       icon: Camera,
       title: "Fotografía",
-      description:
-        "Dirección de arte y retoque con enfoque ilustrativo para transformar imágenes en historias visuales.",
+      description: "Dirección de arte y retoque con enfoque ilustrativo.",
     },
     {
       icon: Combine,
       title: "Síntesis Gráfica",
-      description:
-        "Transformación de conceptos complejos en visuales claros y memorables mediante ilustración estratégica.",
+      description: "Conceptos complejos en visuales claros mediante ilustración estratégica.",
+    },
+    {
+      icon: Film,
+      title: "Animación",
+      description: "Motion graphics que dan vida a cada una de tus historias.",
     },
   ]
 
   return (
-    <section id="services" className="py-20 px-6 bg-white" ref={containerRef}>
+    <section id="services" className="py-12 md:py-20 px-4 md:px-6 bg-white" ref={containerRef}>
       <div className="max-w-6xl mx-auto">
-        {/* Title */}
-        <div className="text-center mb-16">
-          <h2 data-service-title className="font-display text-4xl md:text-5xl font-black mb-4 text-primary">
+        <div className="text-center mb-10 md:mb-16">
+          <h2
+            data-service-title
+            className="font-display text-3xl md:text-4xl lg:text-5xl font-black mb-3 md:mb-4 text-primary"
+          >
             Servicios
           </h2>
-          <p data-service-title className="font-body text-foreground/70 max-w-2xl mx-auto text-lg">
-            Soluciones creativas donde la ilustración es el puente entre tu visión y la conexión emocional con tu
-            audiencia
+          <p data-service-title className="font-body text-foreground/70 max-w-2xl mx-auto text-base md:text-lg px-4">
+            Soluciones creativas donde la ilustración conecta tu visión con tu audiencia
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon
             return (
               <div
                 key={index}
                 data-service-card
-                className="group relative p-8 bg-white border-2 border-border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-accent/50"
+                className="group relative p-6 md:p-8 bg-white border-2 border-border rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 hover:border-accent/50"
               >
                 {/* Decorative corner accent */}
                 <div className="absolute -top-1 -right-1 w-6 h-6 bg-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                {/* Icon */}
                 <div
                   data-service-icon
-                  className="inline-flex items-center justify-center w-16 h-16 mb-6 rounded-xl bg-gradient-to-br from-border/30 to-accent/10"
+                  className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 mb-4 md:mb-6 rounded-xl bg-gradient-to-br from-border/30 to-accent/10"
                 >
-                  <IconComponent className="w-8 h-8 text-accent" strokeWidth={1.5} />
+                  <IconComponent className="w-7 h-7 md:w-8 md:h-8 text-accent" strokeWidth={1.5} />
                 </div>
 
-                {/* Content */}
-                <h3 className="font-display text-xl font-bold text-foreground mb-3">{service.title}</h3>
-                <p className="font-body text-sm text-foreground/70 leading-relaxed">{service.description}</p>
+                <h3 className="font-display text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3">
+                  {service.title}
+                </h3>
+                <p className="font-body text-sm md:text-base text-foreground/70 leading-relaxed">
+                  {service.description}
+                </p>
 
                 {/* Subtle bottom accent line */}
                 <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-accent to-secondary group-hover:w-full transition-all duration-500 rounded-b-2xl"></div>

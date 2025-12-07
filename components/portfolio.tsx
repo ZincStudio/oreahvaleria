@@ -160,32 +160,36 @@ export default function Portfolio() {
     <section id="mi-trabajo" className="py-20 px-6 bg-white" ref={containerRef}>
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
-          <h2 className="portfolio-title text-4xl md:text-6xl font-black mb-6 text-primary">Mi Trabajo</h2>
-          <p className="text-xl text-muted-foreground mb-12">
+          <h2 className="portfolio-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-primary">
+            Mi Trabajo
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-8 sm:mb-12 px-2">
             En cada proyecto busco dar forma a ideas que merecen ser contadas con claridad y sensibilidad. Mi trabajo
             reúne ilustraciones creadas con dedicación, respeto por el detalle y un enfoque versátil que se adapta a
             distintos estilos y necesidades.
           </p>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                  selectedCategory === cat.id
-                    ? "bg-accent text-white hover:text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-accent hover:text-white"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+          <div className="overflow-x-auto pb-4 mb-8 sm:mb-12">
+            <div className="flex sm:flex-wrap justify-start sm:justify-center gap-3 sm:gap-4 min-w-max sm:min-w-0 px-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className={`px-4 sm:px-6 py-2 rounded-full font-semibold transition-all duration-300 whitespace-nowrap ${
+                    selectedCategory === cat.id
+                      ? "bg-accent text-white hover:text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-accent hover:text-white"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredProjects.map((project, index) => (
             <div
               key={index}
@@ -195,7 +199,7 @@ export default function Portfolio() {
             >
               <div className="relative overflow-hidden bg-gray-100">
                 {project.video ? (
-                  <div className="relative w-full h-64">
+                  <div className="relative w-full h-48 sm:h-64">
                     <video
                       src={project.video}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
@@ -205,8 +209,8 @@ export default function Portfolio() {
                       playsInline
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                        <Play className="w-8 h-8 text-white" fill="white" />
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                        <Play className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="white" />
                       </div>
                     </div>
                   </div>
@@ -214,19 +218,19 @@ export default function Portfolio() {
                   <img
                     src={project.thumbnail || "/placeholder.svg"}
                     alt={project.title}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-48 sm:h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#E69D3B]/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              <div className="p-6 space-y-3">
-                <h3 className="font-display text-xl font-bold" style={{ color: "#545928" }}>
+              <div className="p-4 sm:p-6 space-y-3">
+                <h3 className="font-display text-lg sm:text-xl font-bold" style={{ color: "#545928" }}>
                   {project.title}
                 </h3>
-                <p className="font-body text-muted-foreground line-clamp-2">{project.desc}</p>
+                <p className="font-body text-sm sm:text-base text-muted-foreground line-clamp-2">{project.desc}</p>
                 <button
-                  className="mt-4 px-6 py-2 rounded-full font-semibold transition-all duration-300 w-full"
+                  className="mt-4 px-6 py-2 rounded-full font-semibold transition-all duration-300 w-full text-sm sm:text-base"
                   style={{ backgroundColor: "#545928", color: "white" }}
                   onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.9")}
                   onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}

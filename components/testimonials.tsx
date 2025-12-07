@@ -45,29 +45,31 @@ export default function Testimonials() {
   ]
 
   return (
-    <section id="testimonials" className="py-20 px-6 bg-white">
+    <section id="testimonials" className="py-12 md:py-20 px-4 md:px-6 bg-white">
       <div className="max-w-6xl mx-auto">
-        <h2 className="font-display text-4xl font-black text-foreground mb-4 text-center md:text-5xl">
+        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-3 md:mb-4 text-center">
           Colaboraciones & Testimonios
         </h2>
 
-        <p className="font-body text-center text-muted mb-16 max-w-2xl mx-auto text-lg">
+        <p className="font-body text-center text-muted mb-10 md:mb-16 max-w-2xl mx-auto text-base md:text-lg px-4">
           Historias de creativos y emprendedores que confiaron en mi visión
         </p>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
               data-testimonial
-              className="p-8 bg-card rounded-2xl shadow-lg hover:shadow-xl transition-all"
+              className="p-6 md:p-8 bg-card rounded-2xl shadow-lg hover:shadow-xl transition-all"
             >
-              <p className="font-body text-foreground mb-6 italic leading-relaxed">"{testimonial.text}"</p>
+              <p className="font-body text-sm md:text-base text-foreground mb-4 md:mb-6 italic leading-relaxed">
+                "{testimonial.text}"
+              </p>
 
-              <div className="border-t border-border pt-4">
-                <p className="font-display font-bold text-foreground">{testimonial.name}</p>
-                <p className="font-body text-sm text-muted">{testimonial.role}</p>
-                <p className="font-body text-sm text-accent font-semibold">{testimonial.company}</p>
+              <div className="border-t border-border pt-3 md:pt-4">
+                <p className="font-display font-bold text-sm md:text-base text-foreground">{testimonial.name}</p>
+                <p className="font-body text-xs md:text-sm text-muted">{testimonial.role}</p>
+                <p className="font-body text-xs md:text-sm text-accent font-semibold">{testimonial.company}</p>
               </div>
             </div>
           ))}
