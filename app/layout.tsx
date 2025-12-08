@@ -8,9 +8,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Vale Orea | Ilustradora Gráfica | Ilustrando la creatividad",
+  title: "Vale Orea · Ilustración y Diseño | Ilustrando la creatividad",
   description:
-    "Transformo ideas en piezas visuales únicas. Portfolio de diseño gráfico, branding e ilustración. Descubre cómo convierto la originalidad en arte para marcas creativas.",
+    "Portafolio de Vale Orea, ilustradora enfocada en branding, editorial, publicidad y síntesis gráfica. Originalidad, calidad y creatividad para dar vida a ideas únicas.",
   generator: "v0.app",
   icons: {
     icon: [
